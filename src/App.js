@@ -58,8 +58,12 @@ function App() {
     >
       {ready ? (
         <Grid item xs={12} style={{ textAlign: "center" }}>
+          <div style={{ marginBottom: "15px" }}>
+            <Typography variant="h3">Welcome Kings and Queens!</Typography>
+            <Typography variant="h6">Upload your video here and convert it to GIF!</Typography>
+          </div>
           {/* video html tag needs a url as src, so we convert our video to url by a built in function*/}
-          {video && (
+          {!gif && video && (
             <video
               controls
               width="400"
@@ -75,7 +79,9 @@ function App() {
               startIcon={<UploadIcon />}
               onClick={() => setGif(null)}
             >
-              {video ? "Upload Again" : "Upload File"}
+              {gif && video && "Upload Another"}
+              {!gif && video && "Upload Again"}
+              {!gif && !video && "Upload File"}
               <input
                 accept=".mp4, .mkv"
                 type="file"
@@ -87,8 +93,8 @@ function App() {
           <br />
           {video && (
             <>
-              <Container style={{ marginTop: "10px", textAlign: "center" }}>
-                {!gif && (
+              {!gif && (
+                <Container style={{ marginTop: "10px", textAlign: "center" }}>
                   <Button
                     variant="contained"
                     color="secondary"
@@ -101,16 +107,16 @@ function App() {
                     {!converting && "Convert To GIF"}
                     {converting && "Converting..."}
                   </Button>
-                )}
-              </Container>
+                </Container>
+              )}
               {gif && (
                 <Container>
                   <img alt="gif" src={gif} width="400" />
                   <br />
                   <div style={{ marginTop: "10px" }}>
                     <Typography variant="h6" display="inline">
-                      Your GIF is ready
-                    </Typography>{" "}
+                      Your GIF is ready!!&nbsp;&nbsp;
+                    </Typography>
                     <Button
                       variant="contained"
                       color="primary"
