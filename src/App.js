@@ -30,7 +30,7 @@ function App() {
     const data = ffmpeg.FS('readFile', 'out.gif');
 
     // create a URL
-    const url = URL.createObjectURL(new Blob([data.buffer]), {type: 'image/gif'});
+    const url = URL.createObjectURL(new Blob([data.buffer], {type: 'image/gif'}));
     setGif(url);
 
   }
