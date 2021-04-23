@@ -44,7 +44,8 @@ function App() {
       {/* video html tag needs a url as src, so we convert our video to url by a built in function*/}
       { video && <video controls width="250" src={URL.createObjectURL(video)}>
         </video>}
-      <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} />
+        <br />
+      <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} /> <br />
       {video && 
       <button onClick={convertToGif}>Convert To GIF</button>}
 
