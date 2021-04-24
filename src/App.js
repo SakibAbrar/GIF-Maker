@@ -58,21 +58,24 @@ function App() {
     >
       {ready ? (
         <Grid item xs={12} style={{ textAlign: "center" }}>
-          <div style={{ marginBottom: "15px" }}>
+          <div style={{ marginBottom: "10px" }}>
             <Typography variant="h3">Welcome Kings and Queens!</Typography>
             <Typography variant="h6">Upload your video here and convert it to GIF!</Typography>
           </div>
           {/* video html tag needs a url as src, so we convert our video to url by a built in function*/}
           {!gif && video && (
-            <video
-              controls
-              width="400"
-              // style={{ marginLeft: "auto", marginRight: "auto", display: "block" }}
-              src={URL.createObjectURL(video)}
-            ></video>
+            <>
+              <video
+                controls
+                width="400"
+                // style={{ marginLeft: "auto", marginRight: "auto", display: "block" }}
+                src={URL.createObjectURL(video)}
+              />
+              <br />
+            </>
           )}
           <br />
-          <Container style={{ marginTop: "20px", textAlign: "center" }}>
+          <Container style={{ textAlign: "center" }}>
             <Button
               variant="contained"
               component="label"
@@ -83,7 +86,7 @@ function App() {
               {!gif && video && "Upload Again"}
               {!gif && !video && "Upload File"}
               <input
-                accept=".mp4, .mkv"
+                accept=".mp4, .mkv, .mov, .flv, .wmv, .avi, .webm, .ogg, .mpeg"
                 type="file"
                 hidden
                 onChange={(e) => setVideo(e.target.files?.item(0))}
